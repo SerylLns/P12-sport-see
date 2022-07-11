@@ -47,7 +47,7 @@ export const getUserActivity = async (userId) => {
         return new Error(err);
       });
   } else {
-    userActivity = USER_ACTIVITY.find((user) => (user.userId == userId));
+    userActivity = USER_ACTIVITY.find((user) => user.userId == userId);
   }
   const formatedData = userActivity.sessions.map((session) => {
     return { ...session, day: parseInt(session.day.split("-")[2]) };
@@ -61,8 +61,12 @@ export const getUserActivity = async (userId) => {
  */
 export const getUserAverageSessions = async (userId) => {
   let userAverage = null;
-  userAverage = USER_AVERAGE_SESSIONS.find((user) => (user.userId == userId)).sessions;
-  return userAverage.map((avg) => { return { ...avg, day: WEEKDAY[avg.day - 1] }} );
+  userAverage = USER_AVERAGE_SESSIONS.find(
+    (user) => user.userId == userId
+  ).sessions;
+  return userAverage.map((avg) => {
+    return { ...avg, day: WEEKDAY[avg.day - 1] };
+  });
 };
 
 /**
@@ -71,7 +75,14 @@ export const getUserAverageSessions = async (userId) => {
  */
 export const getUserPerformances = async (userId) => {
   let userPerformances = null;
-  userPerformances = USER_PERFORMANCE.find((user) => (user.userId == userId));
+  if (useApi === "true") {
+    await fetch(`${API_URL}user/${userId}/performance`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
+  }
+  userPerformances = USER_PERFORMANCE.find((user) => user.userId == userId);
   const formatedPerformances = userPerformances.data.map((perf) => {
     return {
       ...perf,
