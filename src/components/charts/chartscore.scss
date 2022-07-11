@@ -1,0 +1,18 @@
+.scoreContainer{
+  position: relative;
+}
+.chart-score-tooltips{
+  position: absolute;
+  width: 28%;
+  top: 33%;
+  left: calc(125px - 14%);
+  top: 80px;
+  text-align: center;
+  h2{
+    font-size: 22px;
+  }
+  p{
+    font-size: 14px;
+    color: #74798C;
+  }
+}

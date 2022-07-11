@@ -3,13 +3,13 @@ $mainColor: #020203;
 .top-navbar-container {
   position: relative;
   background-color: $mainColor;
-  height: 90px;
+  height: 70px;
   display: flex;
   // justify-content: space-around;
   align-items: center;
   color: white;
   img {
-    width: 180px;
+    width: 150px;
     margin: 10px 20px;
   }
   .nav-container {
@@ -17,7 +17,7 @@ $mainColor: #020203;
     display: flex;
     justify-content: space-around;
     li {
-      font-size: 24px;
+      font-size: 20px;
       cursor: pointer;
     }
   }
@@ -25,8 +25,8 @@ $mainColor: #020203;
 
 .left-navbar-container {
   background-color: $mainColor;
-  width: 110px;
-  height: calc(100vh - 90px);
+  width: 100px;
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   // justify-content: center;
@@ -50,8 +50,8 @@ $mainColor: #020203;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     padding: 10px;
     border-radius: 6px;
     background-color: #fff;

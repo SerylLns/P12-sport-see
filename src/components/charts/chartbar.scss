@@ -1,0 +1,60 @@
+.customLegend{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 84%;
+  margin-left: 8%;
+  p{
+    color: #20253A;
+    font-size: 15px;
+    font-weight: 500;
+  }
+}
+
+ul{
+  display: flex;
+  justify-content: flex-end;
+}
+.legendItem{
+  font-family: 'Roboto';
+  position: relative;
+  margin-left: 20px;
+  font-size: 14px;
+  color: #74798C;
+  &::before{
+    position: absolute;
+    left: -13px;
+    top: 25%;
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+}
+.legendItem.calories::before{
+  background-color: #FF0101;
+}
+.legendItem.kilogram::before{
+  background-color: #000;
+}
+
+.chart-bar-tooltips{
+  position: relative;
+  // padding-right: 20px;
+  width: 40px;
+  height: 65px;
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  // justify-content: center;
+  // padding: 10px;
+  color: white;
+  background-color: #E60000;
+  text-align: left;
+  span{
+    z-index: 14;
+    padding-right: 20px;
+    width: 100%;
+  }
+}

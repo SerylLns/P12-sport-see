@@ -1,0 +1,46 @@
+.datacard-container{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 70px;
+  margin-bottom: 20px;
+  width: 200px;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.0212249);
+  background-color: #FBFBFB;
+
+  .img-container{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    img{
+      width: 25px;
+      height: 25px;
+    }
+  }
+  .data-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 70%;
+  }
+}
+
+.Calories{
+  background-color: rgba($color: #FF0000, $alpha: .1);
+}
+.Proteines{
+  background-color: rgba($color: #4AB8FF, $alpha: .1);
+}
+
+.Glucides {
+  background-color: rgba($color: #FDCC0C, $alpha: .1);
+}
+
+.Lipides {
+  background-color: rgba($color: #FD5181, $alpha: .1);
+}
