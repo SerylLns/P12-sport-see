@@ -5,7 +5,7 @@ import {
   USER_PERFORMANCE,
 } from "../data";
 
-import { formatedPerformance, kindPerformance, WEEKDAY } from "./utils";
+import { formatedPerformance, WEEKDAY } from "./utils";
 const API_URL = process.env.REACT_APP_API_URL;
 const useApi = process.env.REACT_APP_USE_API;
 
@@ -19,8 +19,9 @@ export const getUserById = async (userId) => {
   if (useApi === "true") {
     await fetch(`${API_URL}user/${userId}`)
       .then((res) => res.json())
-      .then((res) => {
-        user = res.data;
+      .then(({ data }) => {
+        const score = data.todayScore ? data.todayScore : data.score;
+        user = { ...data, score: score };
       })
       .catch((err) => {
         return new Error(err);
@@ -28,8 +29,10 @@ export const getUserById = async (userId) => {
     return user;
   } else {
     user = USER_MAIN_DATA.find((user) => user.id == userId);
-    return user;
+    const score = user.todayScore ? user.todayScore : user.score;
+    user = {...user, score: score}
   }
+  return user;
 };
 
 /**

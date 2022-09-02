@@ -101,14 +101,14 @@ const CustomizedLegend = (props) => {
 const CustomizeTooltips = (props) => {
   return (
     <>
-      <div className="chart-bar-tooltips">
-        {props.payload[0] && (
+      {props.payload?.[0] && (
+        <div className="chart-bar-tooltips">
           <>
             <span>{props.payload[0].value}kg</span>
             <span>{props.payload[1].value}Kcal</span>
           </>
-        )}
-      </div>
+        </div>
+      )}
     </>
   );
 };

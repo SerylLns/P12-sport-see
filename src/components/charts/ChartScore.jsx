@@ -1,15 +1,9 @@
-import { useEffect } from "react";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import './chartscore.scss';
 
 
 const ChartScore = ({ score }) => {
   const todayScore = [{ value: score * 2 }, { value: 1 - score * 2 }];
-
-  useEffect(() => {
-    
-    console.log("score :", score);
-  },[])
   return (
     <div className="scoreContainer">
       <div className="chart-score-tooltips">
