@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 import { getUserPerformances } from "../../services/apiRequest";
 import "./chartradar.scss";
+import PropTypes from "prop-types";
 
 /**
  * @param {string} userId 
@@ -36,5 +37,9 @@ const ChartRadar = ({ userId }) => {
     </RadarChart>
   );
 };
+
+ChartRadar.propTypes = {
+  userId: PropTypes.string
+}
 
 export default ChartRadar;

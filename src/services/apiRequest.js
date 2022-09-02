@@ -4,7 +4,7 @@ import {
   USER_AVERAGE_SESSIONS,
   USER_PERFORMANCE,
 } from "../data";
-
+import PropTypes from "prop-types";
 import { formatedPerformance, WEEKDAY } from "./utils";
 const API_URL = process.env.REACT_APP_API_URL;
 const useApi = process.env.REACT_APP_USE_API;
@@ -35,6 +35,11 @@ export const getUserById = async (userId) => {
   return user;
 };
 
+getUserById.propTypes = {
+  userId: PropTypes.string,
+};
+
+
 /**
  * @param {number} userId
  * @returns {object}
@@ -59,6 +64,10 @@ export const getUserActivity = async (userId) => {
   });
   return formatedData;
 };
+
+getUserActivity.propTypes = {
+  userId: PropTypes.string
+}
 
 /**
  * @param {number} userId
@@ -86,6 +95,10 @@ export const getUserAverageSessions = async (userId) => {
   });
 };
 
+getUserAverageSessions.propTypes = {
+  userId: PropTypes.string,
+};
+
 /**
  * @param {number} userId
  * @returns {object}
@@ -103,4 +116,8 @@ export const getUserPerformances = async (userId) => {
     userPerformances = USER_PERFORMANCE.find((user) => user.userId === parseInt(userId));
   }
   return formatedPerformance(userPerformances);
+};
+
+getUserPerformances.propTypes = {
+  userId: PropTypes.string,
 };

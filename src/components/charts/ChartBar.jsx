@@ -79,6 +79,11 @@ const ChartBar = ({ userId }) => {
   );
 };
 
+ChartBar.propTypes = {
+  userId: PropTypes.string,
+};
+
+
 const CustomizedLegend = (props) => {
   const { payload } = props;
   return (

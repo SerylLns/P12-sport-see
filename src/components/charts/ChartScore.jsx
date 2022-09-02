@@ -1,8 +1,9 @@
+import PropTypes from "prop-types";
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import './chartscore.scss';
 
 /**
- * @param {string} userId 
+ * @param {number} score 
  */
 const ChartScore = ({ score }) => {
   const todayScore = [{ value: score * 2 }, { value: 1 - score * 2 }];
@@ -35,16 +36,9 @@ const ChartScore = ({ score }) => {
   );
 };
 
-const CustomizeTooltips = ({ score }) => {
-  // const { sessionLength } = payload?.payload;
-  return (
-    <>
-      <div className="chart-score-tooltips">
-        <h2>{score}%</h2>
-        <p>de votre objectif</p>
-      </div>
-    </>
-  );
+ChartScore.propTypes = {
+  score: PropTypes.number,
 };
 
 export default ChartScore;
+

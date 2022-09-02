@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 
 /**
  * @param {string} kind 
@@ -22,9 +23,13 @@ export const kindPerformance = (kind) => {
   }
 }
 
+kindPerformance.PropTypes = {
+  kind: PropTypes.string
+}
+
 export const WEEKDAY = ["L", "M", "M", "J", "V", "S", "D"]
 
-/**
+/** 
  * @param {object} performances 
  * @returns {object}
  */
@@ -36,3 +41,7 @@ export const formatedPerformance = (performances) => {
     };
   });
 }
+
+formatedPerformance.PropTypes = {
+  performances: PropTypes.object
+};

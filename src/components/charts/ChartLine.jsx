@@ -7,12 +7,12 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import PropTypes from "prop-types";
 import { getUserAverageSessions } from "../../services/apiRequest";
 import "./chartline.scss";
 
-
 /**
- * @param {string} userId 
+ * @param {string} userId
  */
 const ChartLine = ({ userId }) => {
   const [data, setData] = useState();
@@ -26,10 +26,7 @@ const ChartLine = ({ userId }) => {
   return (
     <div className="lineContainer">
       <h2 className="lineTitle">Durée moyenne des sessions</h2>
-      <ResponsiveContainer
-        width={220}
-        height={180}
-      >
+      <ResponsiveContainer width={220} height={180}>
         <LineChart
           style={{
             padding: "0px 0px",
@@ -75,6 +72,13 @@ const ChartLine = ({ userId }) => {
   );
 };
 
+ChartLine.propTypes = {
+  userId: PropTypes.string,
+};
+
+/**
+ * @param {object} props
+ */
 const CustomizeTooltips = (props) => {
   // const { sessionLength } = payload?.payload;
   return (
@@ -85,4 +89,9 @@ const CustomizeTooltips = (props) => {
     </>
   );
 };
+
+CustomizeTooltips.propTypes = {
+  props: PropTypes.object,
+};
+
 export default ChartLine;
