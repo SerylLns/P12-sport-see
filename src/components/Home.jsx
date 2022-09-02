@@ -12,7 +12,6 @@ import ChartRadar from "./charts/ChartRadar";
 import ChartScore from "./charts/ChartScore";
 import { useParams } from "react-router-dom";
 
-
 const Home = () => {
   const [currentUser, setCurrentUser] = useState();
   const params = useParams();
@@ -21,6 +20,7 @@ const Home = () => {
   useEffect(() => {
     getUserById(userId).then((data) => {
       setCurrentUser(data);
+      console.log(data);
     });
   }, [userId]);
 
@@ -44,18 +44,34 @@ const Home = () => {
           )}
         </div>
         <div className="data-cards">
-          <DataCard img={FireImg} value={"1,900KCal"}>
-            Calories
-          </DataCard>
-          <DataCard img={Chicken} value={"155g"}>
-            Proteines
-          </DataCard>
-          <DataCard img={Apple} value={"290g"}>
-            Glucides
-          </DataCard>
-          <DataCard img={Cheesburger} value={"50g"}>
-            Lipides
-          </DataCard>
+          {currentUser && (
+            <>
+              <DataCard
+                img={FireImg}
+                value={`${currentUser.keyData.calorieCount}KCal`}
+              >
+                Calories
+              </DataCard>
+              <DataCard
+                img={Chicken}
+                value={`${currentUser.keyData.carbohydrateCount}g`}
+              >
+                Proteines
+              </DataCard>
+              <DataCard
+                img={Apple}
+                value={`${currentUser.keyData.lipidCount}g`}
+              >
+                Glucides
+              </DataCard>
+              <DataCard
+                img={Cheesburger}
+                value={`${currentUser.keyData.proteinCount}g`}
+              >
+                Lipides
+              </DataCard>
+            </>
+          )}
         </div>
       </div>
     </div>
