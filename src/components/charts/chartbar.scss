@@ -17,38 +17,48 @@ ul{
   justify-content: flex-end;
 }
 .legendItem{
-  font-family: 'Roboto';
-  position: relative;
-  margin-left: 20px;
-  font-size: 14px;
-  color: #74798C;
-  &::before{
-    position: absolute;
-    left: -13px;
-    top: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  span{
+    position: relative;
+    // left: -50%;
+    // top: 25%;
     content: "";
     width: 8px;
     height: 8px;
     border-radius: 50%;
+    z-index: 1000;
   }
 }
-.legendItem.calories::before{
+.legendItem p{
+  font-family: 'Roboto';
+  position: relative;
+  margin: 0;
+  margin-left: 20px;
+  font-size: 14px;
+  color: #74798C;
+}
+.legendItem.calories span{
   background-color: #FF0101;
 }
-.legendItem.kilogram::before{
+.legendItem.kilogram span{
   background-color: #000;
 }
 
 .chart-bar-tooltips{
   position: relative;
   // padding-right: 20px;
-  width: 40px;
-  height: 65px;
+  width: 60px;
+  text-align: start;
+  height: 75px;
   display: flex;
   flex-direction: column;
   // align-items: center;
-  // justify-content: center;
+  justify-content: center;
   // padding: 10px;
+  font-weight: 500;
+  font-size: 11px;
   color: white;
   background-color: #E60000;
   text-align: left;
@@ -56,5 +66,7 @@ ul{
     z-index: 14;
     padding-right: 20px;
     width: 100%;
+    padding: 10px 10px;
+    margin-left: 5px !important;
   }
 }

@@ -86,11 +86,14 @@ const CustomizedLegend = (props) => {
       <ul>
         {payload.map((entry, index) => (
           <li className={`legendItem ${entry.value}`} key={index}>
-            {`${
-              entry.value === "kilogram"
+            <span></span>
+            <p>
+              {`${
+                entry.value === "kilogram"
                 ? "Poids (kg)"
                 : "Calories brulées (kCal)"
-            }`}
+              }`}
+            </p>
           </li>
         ))}
       </ul>
@@ -104,7 +107,9 @@ const CustomizeTooltips = (props) => {
       {props.payload?.[0] && (
         <div className="chart-bar-tooltips">
           <>
-            <span>{props.payload[0].value}kg</span>
+            <span>
+              {props.payload[0].value}kg
+            </span>
             <span>{props.payload[1].value}Kcal</span>
           </>
         </div>
