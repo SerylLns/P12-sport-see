@@ -30,6 +30,7 @@ const ChartBar = ({ userId }) => {
       <BarChart
         width={850}
         height={200}
+        barGap={-60}
         style={{
           marginLeft: "-60px",
           backgroundColor: "#FBFBFB",
