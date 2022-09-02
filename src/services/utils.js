@@ -1,5 +1,8 @@
 
-
+/**
+ * @param {string} kind 
+ * @returns {string}
+ */
 export const kindPerformance = (kind) => {
   switch (kind) {
     case "energy":
@@ -21,6 +24,10 @@ export const kindPerformance = (kind) => {
 
 export const WEEKDAY = ["L", "M", "M", "J", "V", "S", "D"]
 
+/**
+ * @param {object} performances 
+ * @returns {object}
+ */
 export const formatedPerformance = (performances) => {
   return performances.data.map((perf) => {
     return {

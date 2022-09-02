@@ -2,7 +2,13 @@ import React from 'react';
 import './datacard.scss';
 import PropTypes from "prop-types";
 
-const DataCard = ({img, children, value }) => {
+/**
+ * @param {string} img 
+ * @param {string} children 
+ * @param {string} value 
+ */
+
+const DataCard = ({ img, children, value }) => {
   return (
     <div className="datacard-container">
       <div

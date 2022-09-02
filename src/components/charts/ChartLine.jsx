@@ -10,6 +10,10 @@ import {
 import { getUserAverageSessions } from "../../services/apiRequest";
 import "./chartline.scss";
 
+
+/**
+ * @param {string} userId 
+ */
 const ChartLine = ({ userId }) => {
   const [data, setData] = useState();
 

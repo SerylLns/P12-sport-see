@@ -1,7 +1,9 @@
 import { Cell, Pie, PieChart, ResponsiveContainer } from "recharts";
 import './chartscore.scss';
 
-
+/**
+ * @param {string} userId 
+ */
 const ChartScore = ({ score }) => {
   const todayScore = [{ value: score * 2 }, { value: 1 - score * 2 }];
   return (

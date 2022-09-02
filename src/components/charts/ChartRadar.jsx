@@ -3,6 +3,9 @@ import { PolarAngleAxis, PolarGrid, Radar, RadarChart } from "recharts";
 import { getUserPerformances } from "../../services/apiRequest";
 import "./chartradar.scss";
 
+/**
+ * @param {string} userId 
+ */
 const ChartRadar = ({ userId }) => {
   const [data, setData] = useState();
   useEffect(() => {
