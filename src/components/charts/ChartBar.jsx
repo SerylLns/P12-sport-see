@@ -17,12 +17,10 @@ import PropTypes from "prop-types";
  */
 
 const ChartBar = ({ userId }) => {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([]);
 
   const radius = [8, 8, 0, 0];
 
-  console.log(userId);
-  
   useEffect(() => {
     getUserActivity(parseInt(userId)).then((res) => setData(res));
   }, [userId]);

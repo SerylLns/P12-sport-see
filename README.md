@@ -1,6 +1,6 @@
 ## Prerequisites
 
-- [NodeJS (version 14.17)](https://nodejs.org/en/)
+- [NodeJS (version 16)](https://nodejs.org/en/)
 
 ## Dependencies
 

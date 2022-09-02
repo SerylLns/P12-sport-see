@@ -20,3 +20,12 @@ export const kindPerformance = (kind) => {
 }
 
 export const WEEKDAY = ["L", "M", "M", "J", "V", "S", "D"]
+
+export const formatedPerformance = (performances) => {
+  return performances.data.map((perf) => {
+    return {
+      ...perf,
+      kindName: kindPerformance(performances.kind[`${perf.kind}`]),
+    };
+  });
+}

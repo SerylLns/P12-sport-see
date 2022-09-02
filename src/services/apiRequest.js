@@ -5,13 +5,14 @@ import {
   USER_PERFORMANCE,
 } from "../data";
 
-import { kindPerformance, WEEKDAY } from "./utils";
+import { formatedPerformance, kindPerformance, WEEKDAY } from "./utils";
 const API_URL = process.env.REACT_APP_API_URL;
 const useApi = process.env.REACT_APP_USE_API;
 
 /**
  * @param {number} userId
  * @returns {object}
+ * retrieves information from a user
  */
 export const getUserById = async (userId) => {
   let user = null;
@@ -34,6 +35,7 @@ export const getUserById = async (userId) => {
 /**
  * @param {number} userId
  * @returns {object}
+ * retrieves a user's activity day by day with kilograms and calories
  */
 export const getUserActivity = async (userId) => {
   let userActivity = null;
@@ -58,12 +60,24 @@ export const getUserActivity = async (userId) => {
 /**
  * @param {number} userId
  * @returns {object}
+ *  retrieves the average sessions of a user per day. The week starts on Monday.
  */
 export const getUserAverageSessions = async (userId) => {
   let userAverage = null;
-  userAverage = USER_AVERAGE_SESSIONS.find(
-    (user) => user.userId == userId
-  ).sessions;
+  if (useApi === "true") {
+    await fetch(`${API_URL}user/${userId}/average-sessions`)
+      .then((res) => res.json())
+      .then((res) => {
+        userAverage = res.data.sessions;
+      })
+      .catch((err) => {
+        return new Error(err);
+      });
+  } else {
+    userAverage = USER_AVERAGE_SESSIONS.find(
+      (user) => user.userId == userId
+    ).sessions;
+  }
   return userAverage.map((avg) => {
     return { ...avg, day: WEEKDAY[avg.day - 1] };
   });
@@ -72,22 +86,18 @@ export const getUserAverageSessions = async (userId) => {
 /**
  * @param {number} userId
  * @returns {object}
+ * retrieves a user's performance
  */
 export const getUserPerformances = async (userId) => {
   let userPerformances = null;
   if (useApi === "true") {
     await fetch(`${API_URL}user/${userId}/performance`)
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then((res) => {
+        userPerformances = res.data
       });
+  } else {
+    userPerformances = USER_PERFORMANCE.find((user) => user.userId == userId);
   }
-  userPerformances = USER_PERFORMANCE.find((user) => user.userId == userId);
-  const formatedPerformances = userPerformances.data.map((perf) => {
-    return {
-      ...perf,
-      kindName: kindPerformance(userPerformances.kind[`${perf.kind}`]),
-    };
-  });
-  return formatedPerformances;
+  return formatedPerformance(userPerformances);
 };

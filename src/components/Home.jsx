@@ -11,14 +11,16 @@ import ChartLine from "./charts/ChartLine";
 import ChartRadar from "./charts/ChartRadar";
 import ChartScore from "./charts/ChartScore";
 import { useParams } from "react-router-dom";
+
+
 const Home = () => {
   const [currentUser, setCurrentUser] = useState();
   const params = useParams();
   const userId = params.id;
+
   useEffect(() => {
     getUserById(userId).then((data) => {
       setCurrentUser(data);
-      
     });
   }, [userId]);
 
@@ -36,7 +38,7 @@ const Home = () => {
               <div className="stat-bottom">
                 <ChartLine userId={params.id} />
                 <ChartRadar userId={params.id} />
-                {currentUser && <ChartScore score={currentUser.todayScore} />}
+                {currentUser && <ChartScore score={currentUser.score} />}
               </div>
             </>
           )}
