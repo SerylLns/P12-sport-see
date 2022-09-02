@@ -20,7 +20,6 @@ const Home = () => {
   useEffect(() => {
     getUserById(userId).then((data) => {
       setCurrentUser(data);
-      console.log(data);
     });
   }, [userId]);
 

@@ -28,7 +28,7 @@ export const getUserById = async (userId) => {
       });
     return user;
   } else {
-    user = USER_MAIN_DATA.find((user) => user.id == userId);
+    user = USER_MAIN_DATA.find((user) => user.id === parseInt(userId));
     const score = user.todayScore ? user.todayScore : user.score;
     user = {...user, score: score}
   }
@@ -52,7 +52,7 @@ export const getUserActivity = async (userId) => {
         return new Error(err);
       });
   } else {
-    userActivity = USER_ACTIVITY.find((user) => user.userId == userId);
+    userActivity = USER_ACTIVITY.find((user) => user.userId === userId);
   }
   const formatedData = userActivity.sessions.map((session) => {
     return { ...session, day: parseInt(session.day.split("-")[2]) };
@@ -78,7 +78,7 @@ export const getUserAverageSessions = async (userId) => {
       });
   } else {
     userAverage = USER_AVERAGE_SESSIONS.find(
-      (user) => user.userId == userId
+      (user) => user.userId === parseInt(userId)
     ).sessions;
   }
   return userAverage.map((avg) => {
@@ -100,7 +100,7 @@ export const getUserPerformances = async (userId) => {
         userPerformances = res.data
       });
   } else {
-    userPerformances = USER_PERFORMANCE.find((user) => user.userId == userId);
+    userPerformances = USER_PERFORMANCE.find((user) => user.userId === parseInt(userId));
   }
   return formatedPerformance(userPerformances);
 };
